@@ -5,12 +5,6 @@ import './Category.css';
 export default function Category() {
   return (
     <Container>
-      {/* <Wrap>
-        <img src='/images/viewers-disney.png' alt='viewer-disney' />
-        <video autoPlay loop muted>
-          <source src='/videos/disney.mp4' type='video/mp4' />
-        </video>
-      </Wrap> */}
       {categoryList.map((category) => (
         <Wrap key={category.name}>
           <img src={category.image} alt={category.name} />
