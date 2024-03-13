@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 import requests from '../api/requests';
+import './Banner.css';
 
 export default function Banner() {
   const [movie, setMovie] = useState([]);
@@ -21,7 +22,9 @@ export default function Banner() {
     });
     setMovie(movieDetail);
   };
-  console.log(movie);
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substring(0, n - 1) + '...' : str;
+  };
   return (
     <header
       className='banner'
@@ -31,8 +34,8 @@ export default function Banner() {
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
       }}
     >
-      <div className='banner_contents'>
-        <h1 className='banner_title'>
+      <div className='banner__contents'>
+        <h1 className='banner__title'>
           {movie.title || movie.name || movie.original_name}
         </h1>
         <div className='banner__buttons'>
@@ -40,9 +43,8 @@ export default function Banner() {
             <button className='banner__button play'>play</button>
           )}
         </div>
-        <p className='banner__description'>{movie.overview}</p>
+        <p className='banner__description'>{truncate(movie?.overview, 100)}</p>
       </div>
-      <div className='banner-fadeBottom' />
     </header>
   );
 }
