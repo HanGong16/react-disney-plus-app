@@ -19,9 +19,16 @@ export default function Row({ title, fetchurl, id }) {
       <h4>{title}</h4>
       <div className='slider'>
         <div className='slider__arrow-left'>
-          <span className='arrow'>{'<'}</span>
+          <span
+            className='arrow'
+            onClick={() => {
+              document.getElementById(id).scrollLeft -= window.innerWidth - 80;
+            }}
+          >
+            {'<'}
+          </span>
         </div>
-        <div className='row__posters'>
+        <div className='row__posters' id={id}>
           {movies.map((movie) => (
             <div className='row__poster_box' key={movie.id}>
               <img
@@ -34,7 +41,15 @@ export default function Row({ title, fetchurl, id }) {
           ))}
         </div>
         <div className='slider__arrow-right'>
-          <span className='arrow'>{'>'}</span>
+          <span
+            className='arrow'
+            onClick={() => {
+              console.log(document.getElementById(id));
+              document.getElementById(id).scrollLeft += window.innerWidth - 80;
+            }}
+          >
+            {'>'}
+          </span>
         </div>
       </div>
     </div>
