@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from '../api/axios';
 import './Row.css';
+import MovieModal from './MovieModal';
 
 export default function Row({ title, fetchurl, id }) {
   const [movies, setMovies] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [movieSelected, setMovieSelected] = useState({});
 
   const fetchMovieData = useCallback(async () => {
     const response = await axios.get(fetchurl);
@@ -13,7 +16,11 @@ export default function Row({ title, fetchurl, id }) {
   useEffect(() => {
     fetchMovieData();
   }, [fetchMovieData]);
-  // console.log(movies);
+
+  const handleClick = (movie) => {
+    setModalOpen(true);
+    setMovieSelected(movie);
+  };
   return (
     <div>
       <h4>{title}</h4>
@@ -35,6 +42,7 @@ export default function Row({ title, fetchurl, id }) {
                 className='row__poster'
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 alt={movie.title}
+                onClick={() => handleClick(movie)}
               />
               <div className='movie__title'>{movie.title || movie.name}</div>
             </div>
@@ -44,7 +52,6 @@ export default function Row({ title, fetchurl, id }) {
           <span
             className='arrow'
             onClick={() => {
-              console.log(document.getElementById(id));
               document.getElementById(id).scrollLeft += window.innerWidth - 80;
             }}
           >
@@ -52,6 +59,9 @@ export default function Row({ title, fetchurl, id }) {
           </span>
         </div>
       </div>
+      {modalOpen && (
+        <MovieModal setModalOpen={setModalOpen} movie={movieSelected} />
+      )}
     </div>
   );
 }
