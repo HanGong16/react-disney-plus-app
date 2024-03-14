@@ -34,13 +34,14 @@ export default function Nav() {
 const NavWrapper = styled.nav`
   width: 100%;
   position: fixed;
+  z-index: 90;
   top: 0;
   left: 0;
   background-color: ${(props) => (props.$show ? '#0e0b14' : 'transparent')};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 36px;
+  padding: 20px 36px;
 `;
 
 const Logo = styled.a`
