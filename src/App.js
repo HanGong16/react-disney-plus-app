@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Nav from './components/Nav';
-import Banner from './components/Banner';
+import Hero from './components/Hero';
 import Category from './components/Category';
 import Row from './components/Row';
 import { rows } from './data/rows';
@@ -8,7 +8,7 @@ function App() {
   return (
     <Container>
       <Nav />
-      <Banner />
+      <Hero />
       <Category />
       {rows.map((row) => (
         <Row

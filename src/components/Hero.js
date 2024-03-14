@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 import requests from '../api/requests';
-import './Banner.css';
+import './Hero.css';
 import styled from 'styled-components';
 
-export default function Banner() {
+export default function Hero() {
   const [movie, setMovie] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
 
