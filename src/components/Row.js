@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import axios from '../api/axios';
 import './Row.css';
 
-export default function Row({ title, fetchurl, key }) {
+export default function Row({ title, fetchurl, id }) {
   const [movies, setMovies] = useState([]);
 
   const fetchMovieData = useCallback(async () => {
@@ -13,7 +13,7 @@ export default function Row({ title, fetchurl, key }) {
   useEffect(() => {
     fetchMovieData();
   }, [fetchMovieData]);
-  console.log(movies);
+  // console.log(movies);
   return (
     <div>
       <h4>{title}</h4>
@@ -21,11 +21,10 @@ export default function Row({ title, fetchurl, key }) {
         <div className='slider__arrow-left'>
           <span className='arrow'>{'<'}</span>
         </div>
-        <div className='row__posters' key={key}>
+        <div className='row__posters'>
           {movies.map((movie) => (
-            <div className='row__poster_box'>
+            <div className='row__poster_box' key={movie.id}>
               <img
-                key={movie.key}
                 className='row__poster'
                 src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
                 alt={movie.title}

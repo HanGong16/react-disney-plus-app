@@ -11,7 +11,12 @@ function App() {
       <Banner />
       <Category />
       {rows.map((row) => (
-        <Row key={row.id} title={row.title} fetchurl={row.fetchurl} />
+        <Row
+          key={row.key}
+          id={row.id}
+          title={row.title}
+          fetchurl={row.fetchurl}
+        />
       ))}
     </Container>
   );
