@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DatilPage';
 import SearchPage from './pages/SearchPage';
+import SearchErrorPage from './pages/SearchPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <SearchPage />,
+        errorElement: <SearchErrorPage />,
       },
     ],
   },
