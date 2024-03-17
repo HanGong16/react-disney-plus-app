@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { navLists } from '../data/navLists';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
   const [show, setShow] = useState(false);
@@ -30,6 +32,17 @@ export default function Nav() {
           }}
         />
       </Logo>
+      <NavList>
+        {navLists.map((navList) => (
+          <li key={navList.title}>
+            <Link to={navList.url}>
+              {' '}
+              <span className='nav__icon'> {navList.icon}</span>
+              <span className='hide'> {navList.title}</span>
+            </Link>
+          </li>
+        ))}
+      </NavList>
     </NavWrapper>
   );
 }
@@ -41,7 +54,6 @@ const NavWrapper = styled.nav`
   left: 0;
   background-color: ${(props) => (props.$show ? '#0e0b14' : 'transparent')};
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 20px 36px;
 `;
@@ -56,5 +68,21 @@ const Logo = styled.a`
   img {
     display: block;
     width: 100%;
+  }
+`;
+const NavList = styled.ul`
+  display: flex;
+
+  gap: 20px;
+  span {
+    margin-left: 4px;
+  }
+  @media (max-width: 768px) {
+    .hide {
+      display: none;
+    }
+    .nav__icon {
+      font-size: 20px;
+    }
   }
 `;
