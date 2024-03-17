@@ -9,7 +9,6 @@ import { rows } from './../../data/rows';
 export default function MainPage() {
   return (
     <Container>
-      <Nav />
       <Hero />
       <Category />
       {rows.map((row) => (
