@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Hero from './../../components/Hero';
 import Category from './../../components/Category';
 import Row from './../../components/Row';
-import Nav from './../../components/Nav';
 import { rows } from './../../data/rows';
 
 export default function MainPage() {
