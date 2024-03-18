@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from './../../api/axios';
 import SearchErrorPage from './ErrorPage';
 import SearchData from './SearchData';
+import { useDebounce } from '../../hooks/useDebounce';
 
 export default function SearchPage() {
   const [value, setValue] = useState('');
@@ -20,12 +21,13 @@ export default function SearchPage() {
   };
   let query = useQuery();
   const searchTerm = query.get('q');
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
-    if (searchTerm) {
-      fetchSearchMovie(searchTerm);
+    if (debouncedSearchTerm) {
+      fetchSearchMovie(debouncedSearchTerm);
     }
-  }, [searchTerm]);
+  }, [debouncedSearchTerm]);
 
   const fetchSearchMovie = async (searchTerm) => {
     try {
@@ -37,7 +39,6 @@ export default function SearchPage() {
       throw new Error(error.message);
     }
   };
-  console.log(searchResults);
 
   return (
     <div className='search-container'>
