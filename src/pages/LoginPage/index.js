@@ -8,7 +8,7 @@ export default function LoginPage() {
         <Center>
           <LogoOne src='/images/cta-logo-one.svg' alt='hulu,disney,espn' />
           <SignUpLink>지금 가입</SignUpLink>
-          <SignInLogin> 로그인 </SignInLogin>
+
           <Description>
             영화에 대한 프리미어 엑세스를 얻으십시오. 디즈니 플러스 가격은 다음
             주부터 1000원 인상됩니다
@@ -79,7 +79,7 @@ const SignUpLink = styled.a`
     background-color: #0682f0;
   }
 `;
-const SignInLogin = styled(SignUpLink)``;
+
 const Description = styled.p`
   font-size: 11px;
   margin: 0 0 24px;
