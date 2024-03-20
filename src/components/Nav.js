@@ -14,7 +14,10 @@ import {
 
 export default function Nav() {
   const [show, setShow] = useState(false);
-  const [userData, setUserData] = useState({});
+  const initialUserData = localStorage.getItem('userData')
+    ? JSON.parse(localStorage.getItem('userData'))
+    : {};
+  const [userData, setUserData] = useState(initialUserData);
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
   const auth = getAuth();
@@ -26,6 +29,7 @@ export default function Nav() {
       .then((result) => {
         console.log(result.user);
         setUserData(result.user);
+        localStorage.setItem('userData', JSON.stringify(result.user));
       })
       .catch(() => new Error().message);
   };
