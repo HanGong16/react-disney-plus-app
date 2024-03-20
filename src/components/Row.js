@@ -61,7 +61,7 @@ export default function Row({ title, fetchurl, id }) {
       >
         <Content id={id}>
           {movies.map((movie) => (
-            <SwiperSlide>
+            <SwiperSlide key={movie.id}>
               <Wrap key={movie.id}>
                 <img
                   src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
